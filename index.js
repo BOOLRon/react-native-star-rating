@@ -90,7 +90,7 @@ class StarRating extends Component {
       starsLeft--;
     }
     return (
-      <View style={styles.starRatingContainer}>
+      <View style={[styles.starRatingContainer,this.props.style]}>
         {starButtons}
       </View>
     );
@@ -107,7 +107,11 @@ StarRating.propTypes = {
   rating: PropTypes.number,
   selectedStar: PropTypes.func.isRequired,
   starColor: PropTypes.string,
-  starSize: PropTypes.number
+  starSize: PropTypes.number,
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 }
 
 StarRating.defaultProps = {
@@ -119,7 +123,8 @@ StarRating.defaultProps = {
   maxStars: 5,
   rating: 0,
   starColor: 'black',
-  starSize: 40
+  starSize: 40,
+  style: {}
 }
 
 const styles = StyleSheet.create({
